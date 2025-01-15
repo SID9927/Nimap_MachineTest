@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IMAGE_BASE_URL } from "../service/MovieDb";
+import { IMAGE_BASE_URL } from "../slices/MoviesSlice";
 
 const MovieCard = ({ movie }) => {
   return (

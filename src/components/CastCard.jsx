@@ -1,19 +1,20 @@
 import React from "react";
-import { IMAGE_BASE_URL } from "../service/MovieDb";
+import { IMAGE_BASE_URL } from "../slices/MoviesSlice";
 
-const CastCard = ({ castMember }) => {
+const CastCard = ({ cast }) => {
   return (
     <div className="cast-card">
-      <img
-        src={
-          castMember.profile_path
-            ? `${IMAGE_BASE_URL}${castMember.profile_path}`
-            : "/placeholder.png"
-        }
-        alt={castMember.name}
-      />
-      <h4>{castMember.name}</h4>
-      <p>{castMember.character}</p>
+      {cast.profile_path && (
+        <img
+          src={`${IMAGE_BASE_URL}${cast.profile_path}`}
+          alt={cast.name}
+          className="cast-image"
+        />
+      )}
+      <div className="cast-info">
+        <h3>{cast.name}</h3>
+        <p>{cast.character}</p>
+      </div>
     </div>
   );
 };

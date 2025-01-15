@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MovieGrid from "../components/MovieGrid";
 import Pagination from "../components/Pagination";
-import { getUpcomingMovies } from "../service/MovieDb";
+import { fetchUpcomingMovies } from "../slices/MoviesSlice";
 
 const UpcomingMoviePage = () => {
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies.movies);
+  const totalPages = useSelector((state) => state.movies.totalPages);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    fetchMovies(currentPage);
-  }, [currentPage]);
-
-  const fetchMovies = async (page) => {
-    const data = await getUpcomingMovies(page);
-    setMovies(data.results);
-    setTotalPages(data.total_pages);
-  };
+    dispatch(fetchUpcomingMovies(currentPage));
+  }, [dispatch, currentPage]);
 
   return (
     <div className="upcoming-page">
-      <h1>Upcoming Movies</h1>
+      {/* <h1>Upcoming Movies</h1> */}
       <MovieGrid movies={movies} />
       <Pagination
         currentPage={currentPage}
