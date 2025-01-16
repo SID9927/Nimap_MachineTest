@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,21 +16,28 @@ const NavigationBar = () => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-secondary">
+      <Navbar expand="lg" className="header">
         <Container>
-          <Navbar.Brand href="/">MovieDb</Navbar.Brand>
+          <Navbar.Brand className="nav-logo" href="/">MovieDb</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0 justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="/">Popular</Nav.Link>
-              <Nav.Link href="/top-rated">Top Rated</Nav.Link>
-              <Nav.Link href="/upcoming">Upcoming</Nav.Link>
+              <NavLink to="/" className="nav-link">
+                Popular
+              </NavLink>
+              <NavLink to="/top-rated" className="nav-link">
+                Top Rated
+              </NavLink>
+              <NavLink to="/upcoming" className="nav-link">
+                Upcoming
+              </NavLink>
             </Nav>
-            <Form className="d-flex" onSubmit={handleSearch}>
+            <Form className="d-flex " onSubmit={handleSearch}>
               <Form.Control
                 type="text"
                 placeholder="Movie Name"
                 value={searchQuery}
+                className="me-2"
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Button variant="outline-light" type="submit">

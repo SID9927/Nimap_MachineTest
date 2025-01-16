@@ -67,6 +67,7 @@ const MovieDetailPage = () => {
           <img
             src={`${IMAGE_BASE_URL}${movie.poster_path}`}
             alt={movie.title}
+            className="faded-border-image"
           />
         </div>
         )}

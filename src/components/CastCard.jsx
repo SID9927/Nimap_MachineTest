@@ -13,7 +13,7 @@ const CastCard = ({ cast }) => {
       )}
       <div className="cast-info">
         <h3>{cast.name}</h3>
-        <p>{cast.character}</p>
+        <p>Character : {cast.character}</p>
       </div>
     </div>
   );

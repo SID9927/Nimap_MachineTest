@@ -23,7 +23,7 @@ const SearchMoviePage = () => {
       <MovieGrid movies={movies} />
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={10}
         onPageChange={setCurrentPage}
       />
     </div>
